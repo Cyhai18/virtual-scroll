@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <virtual-scroll :datas='listData' :itemHeight='50' :remain='10'>
+      <template v-slot={item}>
+        <span class="list">{{item.value}}</span>
+      </template>
+    </virtual-scroll>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      listData: []
+    }
+  },
+  created () {
+    this.listData = this.init()
+  },
+  methods: {
+    init () {
+      const arr = []
+      for (let i = 0; i < 10000; i++) {
+        arr.push({
+          id: i,
+          value: i
+        })
+      }
+      return arr
+    }
   }
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<style lang="scss" scoped>
+.list {
+  display: block;
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  border-bottom: 1px solid darkcyan
 }
 </style>

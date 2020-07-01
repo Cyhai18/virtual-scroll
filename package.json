@@ -1,10 +1,14 @@
 {
-  "name": "scroll",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@cyhai/virtual-scroll",
+  "version": "1.0.3",
+  "author": "cyhai",
+  "description": "virtual scroll, a vue component",
+  "main": "lib/virtualScroll.umd.min.js",
+  "keywords": ["vue", "virtual-scroll"],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "lib": "vue-cli-service build --target lib --name virtualScroll --dest lib packages/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
