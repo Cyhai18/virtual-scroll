@@ -21,11 +21,12 @@ Vue.use(virtualScroll)
 
 ## Options
 
-| 参数      |    说明 | 类型  | 可选  | 默认值  |
-| :-------- | --------:|-------:|-------:| :--: |
-| datas  | 数据源 |  Array   |  -   |  [ ]  |
-| itemHeight  | 每项高度 |  Number   |  -   |  40   |
-| remain  | 展示条数 |  Number   |  -   |  10   |
+| 参数      |    说明 | 类型  | 是否可选  | 默认值  |
+| :-------: | :-------:|:------:|:------:| :--: |
+| datas  | 数据源 |  Array   |  否   |  [ ]  |
+| itemHeight  | 每项高度 |  Number   |  是   |  40   |
+| remain  | 展示条数 |  Number   |  是   |  10   |
+| timeout | 刷新频率 | Number | 是 | 10 |
 
 ## Project setup
 `yarn install`

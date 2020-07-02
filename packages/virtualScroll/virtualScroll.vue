@@ -26,8 +26,13 @@ export default {
       type: Number,
       default: 10
     },
+    timeout: {
+      type: Number,
+      default: 10
+    },
     datas: {
       type: Array,
+      required: true,
       default () {
         return []
       }
@@ -37,7 +42,8 @@ export default {
     return {
       offset: 0,
       sIndex: 0,
-      eIndex: this.remain
+      eIndex: this.remain,
+      lastTime: 0
     }
   },
   computed: {
@@ -51,10 +57,14 @@ export default {
   },
   methods: {
     handleScroll () {
-      const scrollTop = this.$refs.vsBox.scrollTop
-      this.sIndex = Math.floor(scrollTop / this.itemHeight)
-      this.eIndex = this.sIndex + this.remain
-      this.offset = this.sIndex * this.itemHeight
+      const currentTime = +new Date()
+      if (currentTime - this.lastTime > this.timeout) {
+        const scrollTop = this.$refs.vsBox.scrollTop
+        this.sIndex = Math.floor(scrollTop / this.itemHeight)
+        this.eIndex = this.sIndex + this.remain
+        this.offset = this.sIndex * this.itemHeight
+        this.lastTime = currentTime
+      }
     }
   }
 }
